@@ -1,9 +1,15 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import {CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  DragDropModule,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 import { Column, ToDo } from '../../models/todo.model';
 import { CommonModule } from '@angular/common';
-
+import {Dialog, DialogModule} from '@angular/cdk/dialog';
+import { TodoDialogComponent } from '../../components/todo-dialog/todo-dialog.component';
 
 @Component({
   selector: 'app-board',
@@ -20,69 +26,73 @@ import { CommonModule } from '@angular/common';
 .cdk-drag-animating {
   transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
 }
-  `
+  `,
 })
 export class BoardComponent {
-
   columns: Column[] = [
     {
       title: 'ToDo',
       todos: [
         {
           id: '1',
-          title: 'Make dishes'
+          title: 'Make dishes',
         },
         {
           id: '2',
-          title: 'Buy a unicorn'
-        }
-      ]
+          title: 'Buy a unicorn',
+        },
+      ],
     },
     {
       title: 'Doing',
       todos: [
         {
           id: '3',
-          title: 'Watch Angular Path in Platzi'
-        }
-      ]
+          title: 'Watch Angular Path in Platzi',
+        },
+      ],
     },
     {
       title: 'Done',
       todos: [
         {
           id: '4',
-          title: 'Play video games'
-        }
-      ]
-    }
-  ]
-
-  todos: ToDo[] = [
-  ]
-
-  doing: ToDo[] = [
-  ];
-  done: ToDo[] = [
+          title: 'Play video games',
+        },
+      ],
+    },
   ];
 
-  drop(e: CdkDragDrop<ToDo[]>){
-    if(e.previousContainer === e.container){
-      moveItemInArray(this.todos, e.previousIndex, e.currentIndex)
-    }else{
+  constructor(private dialog: Dialog) {}
+
+  drop(e: CdkDragDrop<ToDo[]>) {
+    if (e.previousContainer === e.container) {
+      moveItemInArray(e.container.data, e.previousIndex, e.currentIndex);
+    } else {
       transferArrayItem(
         e.previousContainer.data,
         e.container.data,
         e.previousIndex,
-        e.currentIndex,
-      )
+        e.currentIndex
+      );
     }
   }
 
-  addColumn(){
+  addColumn() {
     this.columns.push({
       title: 'New Column',
-      todos: []
+      todos: [],
+    });
+  }
+
+  openDialog(todo: ToDo){
+    const dialogRef = this.dialog.open(TodoDialogComponent, {
+      minWidth: '300px',
+      maxWidth: '50%',
+      autoFocus: false,
+      data: todo,
     })
+
+    dialogRef.closed.subscribe(res => console.log(res))
   }
 }
