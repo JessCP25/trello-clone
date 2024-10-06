@@ -12,5 +12,9 @@ export const routes: Routes = [
   {
     path: 'board',
     loadComponent: () => import('./pages/board/board.component').then(c => c.BoardComponent)
+  },
+  {
+    path: 'scroll',
+    loadComponent: () => import('./pages/scroll/scroll.component').then(c => c.ScrollComponent)
   }
 ];
