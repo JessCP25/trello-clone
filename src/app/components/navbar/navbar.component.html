@@ -12,16 +12,10 @@
       <div class="flex items-center">
         <ul class="flex items-center space-x-2 text-sm font-medium">
           <li>
-            <a
-              class="block py-3 px-4 text-white"
-              >Workspaces</a
-            >
+            <a class="block py-3 px-4 text-white">Workspaces</a>
           </li>
           <li>
-            <a
-              class="block py-3 px-4 text-white"
-              >Recent</a
-            >
+            <a class="block py-3 px-4 text-white">Recent</a>
           </li>
           <li>
             <app-btn typeBtn="button" color="sky">Create</app-btn>
@@ -54,74 +48,76 @@
     </div>
   </div>
 </nav>
-<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="menuOverlay" [cdkConnectedOverlayOpen]="isOpen" [cdkConnectedOverlayHasBackdrop]="true"
-(backdropClick)="isOpen = false"
-(detach)="isOpen = false" >
-  <div
-  class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="menuOverlay"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  (overlayOutsideClick)="isOpen = !isOpen"
+  (backdropClick)="isOpen = false"
+  (detach)="isOpen = false"
 >
-  <div class="py-3 px-4 flex justify-between">
-    <span class="block text-sm text-center text-gray-900">Account</span>
-    <button (click)="isOpen = !isOpen" class="block text-sm text-gray-900">
-      <fa-icon [icon]="faClose"></fa-icon>
-    </button>
-  </div>
-  <div class="py-3 px-4 flex items-center space-x-4">
-    <img
-      class="w-10 h-10 rounded-full"
-      src="https://api.lorem.space/image/face?w=400&h=400"
-      alt=""
-    />
-    <div class="space-y-1">
-      <div>Jese Leos</div>
-      <div class="text-sm text-gray-500">nico.455gmail.com</div>
+  <div
+    class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
+  >
+    <div class="py-3 px-4 flex justify-between">
+      <span class="block text-sm text-center text-gray-900">Account</span>
+      <button (click)="isOpen = !isOpen" class="block text-sm text-gray-900">
+        <fa-icon [icon]="faClose"></fa-icon>
+      </button>
     </div>
+    <div class="py-3 px-4 flex items-center space-x-4">
+      <img
+        class="w-10 h-10 rounded-full"
+        src="https://api.lorem.space/image/face?w=400&h=400"
+        alt=""
+      />
+      <div class="space-y-1">
+        <div>Jese Leos</div>
+        <div class="text-sm text-gray-500">nico.455gmail.com</div>
+      </div>
+    </div>
+    <ul class="py-1">
+      <li>
+        <a
+          href="#"
+          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >Profile</a
+        >
+      </li>
+      <li>
+        <a
+          href="#"
+          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >Activity</a
+        >
+      </li>
+      <li>
+        <a
+          href="#"
+          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >Cards</a
+        >
+      </li>
+      <li>
+        <a
+          href="#"
+          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >Settings</a
+        >
+      </li>
+      <li>
+        <a
+          href="#"
+          class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+          >Sign out</a
+        >
+      </li>
+    </ul>
+    <ul class="py-1">
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700">Log out</a>
+      </li>
+    </ul>
   </div>
-  <ul class="py-1" >
-    <li>
-      <a
-        href="#"
-        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Profile</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Activity</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Cards</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Settings</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
-        >Sign out</a
-      >
-    </li>
-  </ul>
-  <ul class="py-1">
-    <li>
-      <a
-        href="#"
-        class="block py-2 px-4 text-sm text-gray-700"
-        >Log out</a
-      >
-    </li>
-  </ul>
-</div>
 </ng-template>
