@@ -16,5 +16,9 @@ export const routes: Routes = [
   {
     path: 'scroll',
     loadComponent: () => import('./pages/scroll/scroll.component').then(c => c.ScrollComponent)
+  },
+  {
+    path: 'table',
+    loadComponent: () => import('./pages/table/table.component').then(c => c.TableComponent)
   }
 ];

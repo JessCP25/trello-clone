@@ -1,0 +1,45 @@
+<div class="flex flex-col h-screen">
+  <app-navbar></app-navbar>
+  <div class="w-fll grow bg-white-600 p-6">
+    <input [formControl]="input" type="text">
+    <table cdk-table [dataSource]="dataSource">
+      <tr cdk-header-row *cdkHeaderRowDef="columns"></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: columns"></tr>
+
+      <!-- Id column -->
+      <ng-container cdkColumnDef="id">
+        <th cdk-header-cell *cdkHeaderCellDef>Id.</th>
+        <td cdk-cell *cdkCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- Title column -->
+      <ng-container cdkColumnDef="title">
+        <th cdk-header-cell *cdkHeaderCellDef>Title</th>
+        <td cdk-cell *cdkCellDef="let row"> {{row.title}} </td>
+      </ng-container>
+
+      <!-- Price column -->
+      <ng-container cdkColumnDef="price">
+        <th cdk-header-cell *cdkHeaderCellDef>Price</th>
+        <td cdk-cell *cdkCellDef="let row"> {{row.price}} </td>
+      </ng-container>
+
+      <!-- Image column -->
+      <ng-container cdkColumnDef="image">
+        <th cdk-header-cell *cdkHeaderCellDef>Image</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <img class="w-24" src="{{row.images[0]}}" alt="">
+        </td>
+      </ng-container>
+
+      <!-- Actions column -->
+      <ng-container cdkColumnDef="actions">
+        <th cdk-header-cell *cdkHeaderCellDef>Actions</th>
+        <td cdk-cell *cdkCellDef="let row">
+          <app-btn (click)="update(row)"> Update </app-btn>
+        </td>
+      </ng-container>
+
+    </table>
+</div>
+</div>
